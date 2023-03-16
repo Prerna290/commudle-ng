@@ -38,6 +38,7 @@
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
     "@tinymce/tinymce-angular": "^7.0.0",
+    "@types/googlemaps": "^3.43.3",
     "@zxing/browser": "^0.1.1",
     "@zxing/library": "^0.19.1",
     "@zxing/ngx-scanner": "^3.8.0",
