@@ -48,3 +48,36 @@
 //     );
 //   }
 // }
+
+// import { Injectable } from '@angular/core';
+
+// @Injectable({
+//   providedIn: 'root',
+// })
+// export class Service {
+//   private placesService: google.maps.places.PlacesService;
+
+//   constructor() {
+//     const map = new google.maps.Map(document.getElementById('map')!, {
+//       center: { lat: -33.867, lng: 151.195 },
+//       zoom: 15,
+//     });
+
+//     this.placesService = new google.maps.places.PlacesService(map);
+//   }
+
+//   searchPlaces(
+//     query: string,
+//     callback: (
+//       results: google.maps.places.PlaceResult[] | null,
+//       status: google.maps.places.PlacesServiceStatus,
+//     ) => void,
+//   ) {
+//     const request = {
+//       query: query,
+//       fields: ['name', 'geometry'],
+//     };
+
+//     this.placesService.findPlaceFromQuery(request, callback);
+//   }
+// }
