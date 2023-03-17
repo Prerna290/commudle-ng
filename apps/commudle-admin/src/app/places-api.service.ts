@@ -1,10 +1,16 @@
 // import { Injectable } from '@angular/core';
 
-// interface Google {
-//   // map: google.maps.Map;
-//   map: any;
-//   service: any;
-//   infowindow: any;
+// // declare global {
+// //   interface Google {
+// //     // map: google.maps.Map;
+// //     map: any;
+// //     service: any;
+// //     infowindow: any;
+// //   }
+// // }
+
+// declare global {
+//   interface google {}
 // }
 
 // @Injectable({
@@ -18,7 +24,7 @@
 //     private infowindow: google.maps.InfoWindow,
 //   ) {}
 
-// google: any;
+//   google: any;
 
 //   initMap(): void {
 //     const sydney = new google.maps.LatLng(-33.867, 151.195);
