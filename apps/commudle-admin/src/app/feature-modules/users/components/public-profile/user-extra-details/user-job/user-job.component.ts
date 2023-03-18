@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NbDialogRef, NbDialogService, NbTagComponent, NbTagInputAddEvent, NbToastrService } from '@commudle/theme';
 import { UserProfileManagerService } from 'apps/commudle-admin/src/app/feature-modules/users/services/user-profile-manager.service';
 import { UserProfileMenuService } from 'apps/commudle-admin/src/app/feature-modules/users/services/user-profile-menu.service';
+// import { PlacesApiService } from 'apps/commudle-admin/src/app/places-api.service';
 import { GoogleTagManagerService } from 'apps/commudle-admin/src/app/services/google-tag-manager.service';
 import { JobService } from 'apps/commudle-admin/src/app/services/job.service';
 import { ICurrentUser } from 'apps/shared-models/current_user.model';
@@ -20,7 +21,10 @@ import { IPageInfo } from 'apps/shared-models/page-info.model';
 import { IUser } from 'apps/shared-models/user.model';
 import { LibAuthwatchService } from 'apps/shared-services/lib-authwatch.service';
 import { Subscription } from 'rxjs';
+// import { google } from "googlemaps";
+// import {} from '@types/googlemaps';
 
+declare let google: any;
 @Component({
   selector: 'app-user-job',
   templateUrl: './user-job.component.html',
@@ -30,6 +34,9 @@ export class UserJobComponent implements OnInit, OnChanges, OnDestroy {
   @Input() user: IUser;
 
   currentUser: ICurrentUser;
+  // map: google.maps.Map;
+  // service: google.maps.places.PlacesService;
+  // infowindow: google.maps.InfoWindow;
 
   jobs: IJob[] = [];
   tags: string[] = [];
@@ -69,7 +76,7 @@ export class UserJobComponent implements OnInit, OnChanges, OnDestroy {
     private userProfileMenuService: UserProfileMenuService,
     private userProfileManagerService: UserProfileManagerService,
     private route: ActivatedRoute,
-    private gtm: GoogleTagManagerService,
+    private gtm: GoogleTagManagerService, // private placeApi: PlacesApiService,
   ) {
     this.jobForm = this.fb.group(
       {
@@ -104,6 +111,8 @@ export class UserJobComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     // TODO optimize this
+    // this.placeApi.initMap();
+    // this.initMap();
     this.route.fragment.subscribe((fragment) => {
       if (fragment === 'jobs' && this.route.snapshot.queryParams['hiring'] === 'true') {
         setTimeout(() => {
@@ -265,4 +274,37 @@ export class UserJobComponent implements OnInit, OnChanges, OnDestroy {
   gtmService(event, data) {
     this.gtm.dataLayerPushEvent(event, data);
   }
+
+  initMap(): void {
+    // const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+    //   center: { lat: 40.749933, lng: -73.98633 },
+    //   zoom: 13,
+    //   mapTypeControl: false,
+    // });
+    // const card = document.getElementById('pac-card') as HTMLElement;
+    const input = document.getElementById('pac-input') as HTMLInputElement;
+    console.log(input, '1');
+    const options = {
+      fields: ['name'],
+      types: ['regions'],
+    };
+    console.log(options, input, '2');
+    const autocomplete = new google.maps.places.Autocomplete(input, options);
+    console.log(autocomplete, '3');
+    // const infowindow = new google.maps.InfoWindow();
+    // const infowindowContent = document.getElementById('infowindow-content') as HTMLElement;
+    // infowindow.setContent(infowindowContent);
+    // autocomplete.addListener('place_changed', () => {
+    //   infowindow.close();
+
+    //   const place = autocomplete.getPlace();
+    // });
+  }
+
+  // declare global {
+  //   interface Window {
+  //     initMap: () => void;
+  //   }
+  // }
+  // window.initMap = initMap;
 }
