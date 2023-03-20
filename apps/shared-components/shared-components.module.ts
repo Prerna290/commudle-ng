@@ -67,6 +67,7 @@ import { VideoStreamComponent } from './video-stream/video-stream.component';
 import { VotersComponent } from './votes-display/voters/voters.component';
 import { VotesDisplayComponent } from './votes-display/votes-display.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
+import { PlacesApiComponent } from './places-api/places-api.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +106,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
     ShareButtonComponent,
     PaginationComponent,
     LoadingSpinnerComponent,
+    PlacesApiComponent,
   ],
   imports: [
     CommonModule,
@@ -169,6 +171,7 @@ import { WorkInProgressComponent } from './work-in-progress/work-in-progress.com
     ShareButtonComponent,
     PaginationComponent,
     LoadingSpinnerComponent,
+    PlacesApiComponent,
   ],
 })
 export class SharedComponentsModule {}
