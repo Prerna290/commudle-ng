@@ -61,6 +61,7 @@ import { UserNetworkListComponent } from './components/public-profile/user-netwo
 import { UserNetworkComponent } from './components/public-profile/user-network/user-network.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { JobsModule } from '../jobs/jobs.module';
+import { PlacesApiComponent } from 'apps/shared-components/places-api/places-api.component';
 
 @NgModule({
   declarations: [

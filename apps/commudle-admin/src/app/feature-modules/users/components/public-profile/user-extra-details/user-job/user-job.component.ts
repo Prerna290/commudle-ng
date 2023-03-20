@@ -37,9 +37,12 @@ export class UserJobComponent implements OnInit, OnChanges, OnDestroy {
   // map: google.maps.Map;
   // service: google.maps.places.PlacesService;
   // infowindow: google.maps.InfoWindow;
+  address;
 
   jobs: IJob[] = [];
   tags: string[] = [];
+
+  autocomplete: any;
 
   limit = 3;
   page_info: IPageInfo;
@@ -112,7 +115,6 @@ export class UserJobComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit(): void {
     // TODO optimize this
     // this.placeApi.initMap();
-    // this.initMap();
     this.route.fragment.subscribe((fragment) => {
       if (fragment === 'jobs' && this.route.snapshot.queryParams['hiring'] === 'true') {
         setTimeout(() => {
@@ -275,36 +277,39 @@ export class UserJobComponent implements OnInit, OnChanges, OnDestroy {
     this.gtm.dataLayerPushEvent(event, data);
   }
 
-  initMap(): void {
-    // const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
-    //   center: { lat: 40.749933, lng: -73.98633 },
-    //   zoom: 13,
-    //   mapTypeControl: false,
-    // });
-    // const card = document.getElementById('pac-card') as HTMLElement;
-    const input = document.getElementById('pac-input') as HTMLInputElement;
-    console.log(input, '1');
-    const options = {
-      fields: ['name'],
-      types: ['regions'],
-    };
-    console.log(options, input, '2');
-    const autocomplete = new google.maps.places.Autocomplete(input, options);
-    console.log(autocomplete, '3');
-    // const infowindow = new google.maps.InfoWindow();
-    // const infowindowContent = document.getElementById('infowindow-content') as HTMLElement;
-    // infowindow.setContent(infowindowContent);
-    // autocomplete.addListener('place_changed', () => {
-    //   infowindow.close();
-
-    //   const place = autocomplete.getPlace();
-    // });
-  }
-
-  // declare global {
-  //   interface Window {
-  //     initMap: () => void;
-  //   }
+  // getAddress(place: object) {
+  //   this.address = place[‘formatted_address’];
   // }
-  // window.initMap = initMap;
+
+  // initAutocomplete() {
+  //   console.log('hello');
+  //   this.autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
+  //     types: ['establishment'],
+  //     fields: ['name'],
+  //   });
+  //   console.log(this.autocomplete);
+  // }
 }
+
+// initMap(): void {
+//   // const card = document.getElementById('pac-card') as HTMLElement;
+//   const input = document.getElementById('pac-input') as HTMLInputElement;
+//   const options = {
+//     fields: ['name'],
+//     types: ['regions'],
+//   };
+//   const autocomplete = new google.maps.places.Autocomplete(input, options);
+//   autocomplete.addListener('place_changed', () => {
+//     infowindow.close();
+//   const place = autocomplete.getPlace();
+
+//   //   const place = autocomplete.getPlace();
+//   });
+// }
+
+// declare global {
+//   interface Window {
+//     initMap: () => void;
+//   }
+// }
+// window.initMap = initMap;

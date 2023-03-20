@@ -141,25 +141,30 @@
           </label>
           <label class="com-col-span-2">
             Location<span *ngIf="jobForm['controls'].location_type.value === 'office'">*</span>
-            <!-- <div class="pac-card" id="pac-card">
-              <div id="pac-container"> -->
-            <input
-              id="pac-input"
-              type="text"
-              formControlName="location"
-              fullWidth
-              nbInput
-              placeholder="Enter a location"
-            />
-            <!-- </div>
+            <!-- <input formControlName="location" fullWidth nbInput type="text" /> -->
+            <commudle-places-api adressType="geocode"></commudle-places-api>
+          </label>
+          <!-- (setAddress)="getAddress($event)"  -->
+
+          <!-- <div class="pac-card" id="pac-card">
+              <div id="pac-container">
+                <input
+                  id="pac-input"
+                  type="text"
+                  formControlName="location"
+                  fullWidth
+                  nbInput
+                  placeholder="Enter a location"
+                />
+              </div>
             </div> -->
-            <!-- <div id="map"></div> -->
-            <!-- <div id="infowindow-content">
+          <!-- <div id="map"></div> -->
+          <!-- <div id="infowindow-content">
               <span id="place-name" class="title"></span><br />
               <span id="place-address"></span>
             </div> -->
-            <!-- <input formControlName="location" fullWidth nbInput type="text" /> -->
-          </label>
+          <!-- <input formControlName="location" fullWidth nbInput type="text" /> -->
+          <!-- <input formControlName="location" fullWidth nbInput type="text" id="autocomplete" /> -->
         </div>
         <label *ngIf="isEditing">
           Status*
